@@ -19,25 +19,25 @@ void main(){
     });
 
     test("should have an orderer", (){
-      expect(order?.getOrderer(), isInstanceOf<User>());
+      expect(order?.orderer, isInstanceOf<User>());
     });
 
     test("should have at eggCount", (){
-      order?.setEggCount(1);
-      expect(order?.getEggCount(), equals(1));
+      order?.eggCount = 1;
+      expect(order?.eggCount, equals(1));
     });
 
     test("should be marked complete", (){
-      expect(order?.isComplete(), equals(false));
+      expect(order?.isComplete, equals(false));
     });
 
     test("complete should be togglable", (){
       order?.toggleComplete();
-      expect(order?.isComplete(), equals(true));
+      expect(order?.isComplete, equals(true));
     });
 
     test("should have a createTime", (){
-      expect(order?.getCreatedTime().minute, equals(const Clock().now().minute));
+      expect(order?.createdTime.minute, equals(const Clock().now().minute));
     });
   });
 }

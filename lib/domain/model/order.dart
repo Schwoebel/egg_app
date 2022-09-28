@@ -4,31 +4,16 @@ import 'package:eggp_app/domain/model/user.dart';
 class Order{
   int eggCount;
   final User orderer;
-  bool complete = false;
+  bool isComplete = false;
   late final DateTime createdTime;
+  late bool placed;
   Order(this.orderer, this.eggCount){
     createdTime = clock.now();
-  }
-  void setEggCount(int i) {
-    eggCount = i;
-  }
-  int getEggCount(){
-    return eggCount;
-  }
-
-  User getOrderer() {
-    return orderer;
-  }
-
-  isComplete() {
-    return complete;
+    placed = false;
   }
 
   void toggleComplete() {
-    complete = !complete;
+    isComplete = !isComplete;
   }
 
-  DateTime getCreatedTime() {
-    return createdTime;
-  }
 }
