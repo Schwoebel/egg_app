@@ -1,4 +1,5 @@
 import 'package:clock/clock.dart';
+import 'package:eggp_app/domain/enum/order_status_enum.dart';
 import 'package:eggp_app/domain/model/contact_details.dart';
 import 'package:eggp_app/domain/model/order.dart';
 import 'package:eggp_app/domain/model/user.dart';
@@ -28,16 +29,32 @@ void main(){
     });
 
     test("should be marked complete", (){
-      expect(order?.isComplete, equals(false));
+      expect(order?.status, equals(OrderStatus.building));
     });
 
     test("complete should be togglable", (){
       order?.toggleComplete();
-      expect(order?.isComplete, equals(true));
+      expect(order?.status, equals(OrderStatus.complete));
     });
 
     test("should have a createTime", (){
       expect(order?.createdTime.minute, equals(const Clock().now().minute));
+    });
+
+    test("on creation an order should not be cancelled", (){
+      expect(order?.status, isNot(OrderStatus.cancelled));
+    });
+
+    test("when cancelled an order should be cancelled", (){
+      order?.cancelOrder();
+      expect(order?.status, equals(OrderStatus.cancelled));
+    });
+    test("the order should be changeable", (){
+      expect(order?.changed, equals(false));
+    });
+    test("the order should be changed", (){
+      order?.changed = true;
+      expect(order?.changed, equals(true));
     });
   });
 }

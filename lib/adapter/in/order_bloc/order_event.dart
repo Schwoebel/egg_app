@@ -2,13 +2,13 @@ part of 'order_bloc.dart';
 
 @immutable
 abstract class OrderEvent extends Equatable {
-  const OrderEvent([List props = const []]);
+  const OrderEvent([List props = const []]) : super();
 }
 
 
-class PlaceOrder extends OrderEvent{
+class TakeOrder extends OrderEvent{
   final Order order;
-  PlaceOrder(this.order): super([order]);
+  TakeOrder(this.order): super([order]);
 
   @override
   List<Object?> get props => [order];
@@ -28,4 +28,12 @@ class ChangeOrder extends OrderEvent{
 
   @override
   List<Object?> get props => [order];
+}
+
+class CompleteOrder extends OrderEvent{
+  final Order order;
+  CompleteOrder(this.order): super([order]);
+
+  @override
+  List<Object?> get props => [props];
 }
