@@ -4,7 +4,6 @@ import 'order.dart';
 
 class OrderTimer{
   static bool canOrderBeCreated(){
-    Clock clock = const Clock();
     if(clock.now().hour == 9){
       return false;
     }
@@ -12,7 +11,6 @@ class OrderTimer{
   }
 
   static bool canOrderBePlaced(Order order){
-    Clock clock = const Clock();
     if(order.createdTime.hour < 9 && clock.now().hour == 9){
       return false;
     }
@@ -20,7 +18,6 @@ class OrderTimer{
   }
 
   static DateTime orderDeliveryDate(Order order){
-    Clock clock = const Clock();
     DateTime rightNow = clock.now();
     if(rightNow.hour > 8){
       return clock.daysFromNow(1);

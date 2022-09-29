@@ -21,16 +21,19 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
     on<CompleteOrder>(_completeOrder);
   }
 
-  void _placeOrder(OrderEvent event, Emitter<OrderState> orderState){
+  FutureOr<void> _placeOrder(OrderEvent event, Emitter<OrderState> orderStateEmitter) {
+    Order order = event.props.first as Order;
+    orderStateEmitter(OrderPlacing(order));
+    takeOrderUseCase.registerOrder(order);
+    orderStateEmitter(OrderPlaced(order));
+  }
+  void _changeOrder(OrderEvent event, Emitter<OrderState> orderStateEmitter){
 
   }
-  void _changeOrder(OrderEvent event, Emitter<OrderState> orderState){
+  void _cancelOrder(OrderEvent event, Emitter<OrderState> orderStateEmitter){
 
   }
-  void _cancelOrder(OrderEvent event, Emitter<OrderState> orderState){
-
-  }
-  void _completeOrder(OrderEvent event, Emitter<OrderState> orderState){
+  void _completeOrder(OrderEvent event, Emitter<OrderState> orderStateEmitter){
 
   }
 }

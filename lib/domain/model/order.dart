@@ -6,12 +6,12 @@ import '../enum/order_status_enum.dart';
 
 class Order{
   int eggCount;
-  final User orderer;
-  late final DateTime createdTime;
+  final User orderMaker;
+  late DateTime createdTime;
   late final DateTime deliveryDate;
   late OrderStatus status;
   late bool changed = false;
-  Order(this.orderer, this.eggCount){
+  Order(this.orderMaker, this.eggCount){
     createdTime = clock.now();
     status = OrderStatus.building;
     deliveryDate = OrderTimer.orderDeliveryDate(this);

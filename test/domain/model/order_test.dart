@@ -20,7 +20,7 @@ void main(){
     });
 
     test("should have an orderer", (){
-      expect(order?.orderer, isInstanceOf<User>());
+      expect(order?.orderMaker, isInstanceOf<User>());
     });
 
     test("should have at eggCount", (){
