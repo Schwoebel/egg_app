@@ -11,8 +11,26 @@ class OrderInitial extends OrderState {
 }
 
 class OrderPlacing extends OrderState {
+  const OrderPlacing();
+  @override
+  List<Object?> get props => [];
+}
+
+class OrderChanging extends OrderState {
+  const OrderChanging();
+  @override
+  List<Object?> get props => [];
+}
+
+class OrderCancelling extends OrderState {
+  const OrderCancelling();
+  @override
+  List<Object?> get props => [];
+}
+
+class OrderCancelled extends OrderState {
   final Order order;
-  const OrderPlacing(this.order);
+  const OrderCancelled(this.order);
   @override
   List<Object?> get props => [order];
 }
@@ -32,10 +50,9 @@ class OrderPlaced extends OrderState {
 }
 
 class OrderCompleting extends OrderState {
-  final Order order;
-  const OrderCompleting(this.order);
+  const OrderCompleting();
   @override
-  List<Object?> get props => [order];
+  List<Object?> get props => [];
 }
 
 class OrderComplete extends OrderState {

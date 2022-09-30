@@ -1,0 +1,4 @@
+enum EggType{
+  hardBoiled,
+  softBoiled
+}

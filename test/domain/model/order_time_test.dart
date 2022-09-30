@@ -1,5 +1,6 @@
 import 'package:clock/clock.dart';
 import 'package:eggp_app/domain/model/contact_details.dart';
+import 'package:eggp_app/domain/model/egg.dart';
 import 'package:eggp_app/domain/model/order.dart';
 import 'package:eggp_app/domain/model/order_timer.dart';
 import 'package:eggp_app/domain/model/user.dart';
@@ -16,7 +17,7 @@ void main() {
       ContactDetails contactDetails = ContactDetails(
           "Curtis", "Schwoebel", "curtis.schwoebel@gmail.com", "0735334287");
       user = User(contactDetails, "asdqwe123");
-      order = Order(user, 0);
+      order = Order(user, [Egg(), Egg()]);
       order?.createdTime = DateTime(2022, 6, 6, 7, 30);
     });
     test("Orders cannot be placed", () {

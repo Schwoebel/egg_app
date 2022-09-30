@@ -1,22 +1,42 @@
 import 'package:eggp_app/application/use_cases/take_order_usecase.dart';
 import 'package:eggp_app/domain/enum/order_status_enum.dart';
 import 'package:eggp_app/domain/model/contact_details.dart';
+import 'package:eggp_app/domain/model/egg.dart';
 import 'package:eggp_app/domain/model/order.dart';
 import 'package:eggp_app/domain/model/user.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main(){
-  test("Can be created", (){
-    TakeOrderUseCase takeOrderUseCase = TakeOrderUseCase();
-    expect(takeOrderUseCase, isInstanceOf<TakeOrderUseCase>());
+  TakeOrderUseCase takeOrderUseCase = TakeOrderUseCase();
+  ContactDetails contactDetails = ContactDetails("curtis", "schwoebel", "curtis.schwoebel@gmail.com", "0735332487");
+  User user = User(contactDetails, "qweasd");
+  group("Order management", (){
+    Order? order;
+    setUpAll((){
+      order = Order(user, [Egg()]);
+    });
+    test("Can be created", (){
+      expect(takeOrderUseCase, isInstanceOf<TakeOrderUseCase>());
+    });
+
+    test("Can take order", (){
+      takeOrderUseCase.registerOrder(order!);
+      expect(order?.status, equals(OrderStatus.placed));
+      expect(order?.id, isNot(null));
+      expect(order?.createdTime, isNot(null));
+      expect(order?.deliveryDate, isNot(null));
+    });
+
+    test("Can change Order", (){
+      order?.eggs = [Egg(), Egg()];
+      takeOrderUseCase.changeOrder(order!);
+      expect(order?.changed, equals(true));
+    });
+
+    test("Can cancel order", (){
+      takeOrderUseCase.cancelOrder(order!);
+      expect(order?.status, equals(OrderStatus.cancelled));
+    });
   });
 
-  test("Can take order", (){
-    ContactDetails contactDetails = ContactDetails("curtis", "schwoebel", "curtis.schwoebel@gmail.com", "0735332487");
-    User user = User(contactDetails, "qweasd");
-    Order order = Order(user, 1);
-    TakeOrderUseCase takeOrderUseCase = TakeOrderUseCase();
-    takeOrderUseCase.registerOrder(order);
-    expect(order.status, equals(OrderStatus.placed));
-  });
 }

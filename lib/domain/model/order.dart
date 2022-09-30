@@ -3,15 +3,17 @@ import 'package:eggp_app/domain/model/order_timer.dart';
 import 'package:eggp_app/domain/model/user.dart';
 
 import '../enum/order_status_enum.dart';
+import 'egg.dart';
 
 class Order{
-  int eggCount;
+  List<Egg> eggs;
   final User orderMaker;
   late DateTime createdTime;
-  late final DateTime deliveryDate;
+  late DateTime deliveryDate;
   late OrderStatus status;
   late bool changed = false;
-  Order(this.orderMaker, this.eggCount){
+  late String id;
+  Order(this.orderMaker, this.eggs){
     createdTime = clock.now();
     status = OrderStatus.building;
     deliveryDate = OrderTimer.orderDeliveryDate(this);

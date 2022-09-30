@@ -1,6 +1,7 @@
 import 'package:eggp_app/adapter/in/order_bloc/order_bloc.dart';
 import 'package:eggp_app/domain/enum/order_status_enum.dart';
 import 'package:eggp_app/domain/model/contact_details.dart';
+import 'package:eggp_app/domain/model/egg.dart';
 import 'package:eggp_app/domain/model/order.dart';
 import 'package:eggp_app/domain/model/user.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -12,7 +13,7 @@ void main(){
     setUp((){
       ContactDetails contactDetails = ContactDetails("curtis", "schwoebel", "curtis.schwoebel@gmail.com", "0735332487");
       User user = User(contactDetails, "qweasd");
-      order = Order(user, 1);
+      order = Order(user, [Egg()]);
     });
     test("Should create PlaceOrder", (){
       TakeOrder placeOrder = TakeOrder(order!);
