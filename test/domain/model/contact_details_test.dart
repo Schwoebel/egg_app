@@ -22,6 +22,9 @@ void main(){
     test("User has a phone number", (){
       expect(contactDetails?.getPhoneNumber(), equals("0735334287"));
     });
+    test("returns the pretty name", (){
+      expect(contactDetails?.prettyName, equals("Curtis Schwoebel"));
+    });
   });
 
 }

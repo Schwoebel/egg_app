@@ -21,4 +21,7 @@ class ContactDetails {
   String getPhoneNumber() {
     return phoneNumber;
   }
+
+  get prettyName => '$firstName $lastName';
+
 }

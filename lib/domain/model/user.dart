@@ -22,5 +22,7 @@ class User{
     return token;
   }
 
+  get prettyContactName => contactDetails.prettyName;
+
 
 }

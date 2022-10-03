@@ -22,5 +22,8 @@ void main(){
       user?.setToken("123qweasd");
       expect(user?.getToken(), equals("123qweasd"));
     });
+    test("User has a pretty name", (){
+      expect(user?.prettyContactName, equals("Curtis Schwoebel"));
+    });
   });
 }
