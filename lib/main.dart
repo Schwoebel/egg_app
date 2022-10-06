@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_simple_dependency_injection/injector.dart';
+
+import 'domain/core/module_container.dart';
 
 void main() {
   runApp(const MyApp());
+  final injector = ModuleContainer().initialise(Injector());
+  //TODO: TEST THIS INJECTOR!!!!
 }
 
 class MyApp extends StatelessWidget {

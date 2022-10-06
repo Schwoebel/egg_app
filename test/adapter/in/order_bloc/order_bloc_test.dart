@@ -66,15 +66,14 @@ void main() {
     });
 
     blocTest<OrderBloc, OrderState>(
-      'Can change an order',
+      'Can cancel an order',
       build: () => OrderBloc(completeOrderUseCase, takeOrderUseCase),
       act: (bloc) => bloc.add(CancelOrder(order!)),
       expect: () =>
           <OrderState>[orderCancelling, OrderCancelled(order!)],
     );
   });
-
-  group("OrderBloc Cancelling", () {
+  group("OrderBloc Completing", () {
     Order? order;
     setUp(() {
       order = Order(user, [Egg()]);
@@ -82,7 +81,7 @@ void main() {
     });
 
     blocTest<OrderBloc, OrderState>(
-      'Can change an order',
+      'Can complete an order',
       build: () => OrderBloc(completeOrderUseCase, takeOrderUseCase),
       act: (bloc) => bloc.add(CompleteOrder(order!)),
       expect: () =>

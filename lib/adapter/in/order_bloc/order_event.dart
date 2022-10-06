@@ -35,5 +35,5 @@ class CompleteOrder extends OrderEvent{
   const CompleteOrder(this.order): super(order);
 
   @override
-  List<Object?> get props => [props];
+  List<Object?> get props => [order];
 }
