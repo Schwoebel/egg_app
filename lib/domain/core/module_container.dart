@@ -5,9 +5,9 @@ import 'package:flutter_simple_dependency_injection/injector.dart';
 class ModuleContainer {
   Injector initialise(Injector injector) {
 
-
+    injector.map<FirebaseApp>((i) => Firebase.app(), isSingleton:true);
     injector.map<OrderAdapter>(
-            (i) => OrderAdapter(firebase: i.get<Firebase>()));
+            (i) => OrderAdapter());
    /**
     injector.map<String>((i) => 'https://api.com/', key: 'apiUrl');
     injector.map<Firebase>((i) => i.get<Firebase>())
