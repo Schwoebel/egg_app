@@ -1,10 +1,10 @@
-import 'package:eggp_app/adapter/in/order_bloc/order_bloc.dart';
-import 'package:eggp_app/application/use_cases/complete_order_usecase.dart';
-import 'package:eggp_app/application/use_cases/take_order_usecase.dart';
-import 'package:eggp_app/domain/model/contact_details.dart';
-import 'package:eggp_app/domain/model/egg.dart';
-import 'package:eggp_app/domain/model/order.dart';
-import 'package:eggp_app/domain/model/user.dart';
+import 'package:egg_app/adapter/in/order_bloc/order_bloc.dart';
+import 'package:egg_app/application/use_cases/complete_order_usecase.dart';
+import 'package:egg_app/application/use_cases/take_order_usecase.dart';
+import 'package:egg_app/domain/model/contact_details.dart';
+import 'package:egg_app/domain/model/egg.dart';
+import 'package:egg_app/domain/model/order.dart';
+import 'package:egg_app/domain/model/user.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:bloc_test/bloc_test.dart';
 

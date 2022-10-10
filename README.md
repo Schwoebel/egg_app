@@ -1,4 +1,4 @@
-# eggp_app
+# egg_app
 
 Hard or Soft, they eggs must be cooked.
 

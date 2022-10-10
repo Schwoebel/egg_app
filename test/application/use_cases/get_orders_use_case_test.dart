@@ -1,8 +1,8 @@
-import 'package:eggp_app/application/ports/in/get_orders_port.dart';
-import 'package:eggp_app/application/use_cases/get_orders_use_case.dart';
-import 'package:eggp_app/domain/model/contact_details.dart';
-import 'package:eggp_app/domain/model/order.dart';
-import 'package:eggp_app/domain/model/user.dart';
+import 'package:egg_app/application/ports/in/get_orders_port.dart';
+import 'package:egg_app/application/use_cases/get_orders_use_case.dart';
+import 'package:egg_app/domain/model/contact_details.dart';
+import 'package:egg_app/domain/model/order.dart';
+import 'package:egg_app/domain/model/user.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {

@@ -1,6 +1,6 @@
 {
-    "name": "eggp_app",
-    "short_name": "eggp_app",
+    "name": "egg_app",
+    "short_name": "egg_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

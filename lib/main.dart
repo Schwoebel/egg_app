@@ -9,12 +9,8 @@ const USE_DATABASE_EMULATOR = true;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
   runApp(const MyApp());
-  final injector = ModuleContainer().initialise(Injector());
-  //TODO: TEST THIS INJECTOR!!!!
+  final injector = await ModuleContainer().initialise(Injector());
 }
 
 class MyApp extends StatelessWidget {

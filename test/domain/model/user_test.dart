@@ -1,5 +1,5 @@
-import 'package:eggp_app/domain/model/contact_details.dart';
-import 'package:eggp_app/domain/model/user.dart';
+import 'package:egg_app/domain/model/contact_details.dart';
+import 'package:egg_app/domain/model/user.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main(){

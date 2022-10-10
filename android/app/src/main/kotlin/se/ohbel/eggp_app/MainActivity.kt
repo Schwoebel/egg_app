@@ -1,4 +1,4 @@
-package se.ohbel.eggp_app
+package se.ohbel.egg_app
 
 import io.flutter.embedding.android.FlutterActivity
 

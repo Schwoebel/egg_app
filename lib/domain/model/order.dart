@@ -1,6 +1,6 @@
 import 'package:clock/clock.dart';
-import 'package:eggp_app/domain/model/order_timer.dart';
-import 'package:eggp_app/domain/model/user.dart';
+import 'package:egg_app/domain/model/order_timer.dart';
+import 'package:egg_app/domain/model/user.dart';
 
 import '../enum/order_status_enum.dart';
 import 'egg.dart';

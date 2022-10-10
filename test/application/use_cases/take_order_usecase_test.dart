@@ -1,9 +1,9 @@
-import 'package:eggp_app/application/use_cases/take_order_usecase.dart';
-import 'package:eggp_app/domain/enum/order_status_enum.dart';
-import 'package:eggp_app/domain/model/contact_details.dart';
-import 'package:eggp_app/domain/model/egg.dart';
-import 'package:eggp_app/domain/model/order.dart';
-import 'package:eggp_app/domain/model/user.dart';
+import 'package:egg_app/application/use_cases/take_order_usecase.dart';
+import 'package:egg_app/domain/enum/order_status_enum.dart';
+import 'package:egg_app/domain/model/contact_details.dart';
+import 'package:egg_app/domain/model/egg.dart';
+import 'package:egg_app/domain/model/order.dart';
+import 'package:egg_app/domain/model/user.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main(){

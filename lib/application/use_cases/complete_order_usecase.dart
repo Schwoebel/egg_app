@@ -1,5 +1,5 @@
-import 'package:eggp_app/application/ports/in/complete_order_port.dart';
-import 'package:eggp_app/domain/model/order.dart';
+import 'package:egg_app/application/ports/in/complete_order_port.dart';
+import 'package:egg_app/domain/model/order.dart';
 
 class CompleteOrderUseCase implements CompleteOrder{
   CompleteOrderUseCase();

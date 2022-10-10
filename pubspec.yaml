@@ -1,4 +1,4 @@
-name: eggp_app
+name: egg_app
 description: Hard or Soft, they eggs must be cooked.
 
 # The following line prevents the package from being accidentally published to
@@ -50,6 +50,8 @@ dev_dependencies:
   test: ^1.16.0
   bloc_test: ^9.1.0
   mockito: ^5.3.2
+  integration_test:
+    sdk: flutter
   flutter_test:
     sdk: flutter
 

@@ -1,4 +1,4 @@
-import 'package:eggp_app/domain/model/egg_type_enum.dart';
+import 'package:egg_app/domain/model/egg_type_enum.dart';
 
 class Egg {
   EggType eggType;

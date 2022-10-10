@@ -1,7 +1,7 @@
 import 'package:clock/clock.dart';
-import 'package:eggp_app/domain/enum/order_status_enum.dart';
-import 'package:eggp_app/domain/model/order.dart';
-import 'package:eggp_app/domain/model/order_timer.dart';
+import 'package:egg_app/domain/enum/order_status_enum.dart';
+import 'package:egg_app/domain/model/order.dart';
+import 'package:egg_app/domain/model/order_timer.dart';
 
 import '../ports/in/take_order_port.dart';
 
