@@ -1,6 +1,6 @@
-import 'package:egg_app/adapter/out/order_adapter.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:egg_app/adapter/out/firestore/order_collection_adapter.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter_simple_dependency_injection/injector.dart';
 
 import '../../firebase_options.dart';
@@ -10,9 +10,9 @@ class ModuleContainer {
     await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,
     );
-    injector.map<FirebaseDatabase>((i) => FirebaseDatabase.instance, isSingleton:true);
-    injector.map<OrderAdapter>(
-            (i) => OrderAdapter(i.get<FirebaseDatabase>()));
+    injector.map<FirebaseFirestore>((i) => FirebaseFirestore.instance, isSingleton:true);
+    injector.map<OrderCollectionAdapter>(
+            (i) => OrderCollectionAdapter(i.get<FirebaseFirestore>().collection('order')));
    /**
     injector.map<String>((i) => 'https://api.com/', key: 'apiUrl');
     injector.map<Firebase>((i) => i.get<Firebase>())

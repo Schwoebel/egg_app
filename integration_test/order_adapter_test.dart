@@ -1,4 +1,4 @@
-import 'package:egg_app/adapter/out/order_adapter.dart';
+import 'package:egg_app/adapter/out/firestore/order_collection_adapter.dart';
 import 'package:egg_app/domain/core/module_container.dart';
 import 'package:egg_app/domain/model/contact_details.dart';
 import 'package:egg_app/domain/model/egg.dart';
@@ -21,7 +21,7 @@ Future<void> main() async {
   print(instance.dump());
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
   final injector = await ModuleContainer().initialise(Injector());
-  OrderAdapter orderAdapter = injector.get<OrderAdapter>();
+  OrderCollectionAdapter orderAdapter = injector.get<OrderCollectionAdapter>();
   testWidgets('failing test example', (tester) async {
     ContactDetails contactDetails = ContactDetails("curtis", "schwoebel", "curtis.schwoebel@gmail.com", "0735332487");
     User user = User(contactDetails, "qweasd");

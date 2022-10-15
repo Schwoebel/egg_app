@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:clock/clock.dart';
 import 'package:egg_app/domain/enum/order_status_enum.dart';
 import 'package:egg_app/domain/model/contact_details.dart';
@@ -60,6 +62,11 @@ void main(){
     test("The Order should have an Id", (){
       order?.id = "qweasd";
       expect(order?.id, "qweasd");
+    });
+    test("The order should be converted to Json", (){
+      String jsonString = jsonEncode(order?.toJson());
+      Map<String, dynamic> orderMappedFromJson = jsonDecode(jsonString);
+      expect(orderMappedFromJson['orderMaker'], equals("asdqwe123"));
     });
   });
 }

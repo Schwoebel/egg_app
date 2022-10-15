@@ -5,7 +5,7 @@ import 'package:egg_app/domain/model/user.dart';
 import '../enum/order_status_enum.dart';
 import 'egg.dart';
 
-class Order{
+class Order {
   List<Egg> eggs;
   final User orderMaker;
   late DateTime createdTime;
@@ -13,7 +13,7 @@ class Order{
   late OrderStatus status;
   late bool changed = false;
   late String id;
-  Order(this.orderMaker, this.eggs){
+  Order(this.orderMaker, this.eggs) {
     createdTime = clock.now();
     status = OrderStatus.building;
     deliveryDate = OrderTimer.orderDeliveryDate(this);
@@ -23,8 +23,17 @@ class Order{
     status = OrderStatus.complete;
   }
 
-  void cancelOrder(){
+  void cancelOrder() {
     status = OrderStatus.cancelled;
   }
 
+  Map<String, dynamic> toJson() => {
+      "eggs": "eggs"
+       // "eggs": jsonEncode(eggs),
+       // "orderMaker": orderMaker.id,
+       // "created": createdTime.toString(),
+       // "orderStatus": status.toString(),
+       // "changed": changed.toString(),
+       // "deliveryDate": deliveryDate.toString()
+      };
 }
