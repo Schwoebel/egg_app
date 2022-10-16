@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:clock/clock.dart';
 import 'package:egg_app/domain/model/order_timer.dart';
 import 'package:egg_app/domain/model/user.dart';
@@ -28,12 +30,11 @@ class Order {
   }
 
   Map<String, dynamic> toJson() => {
-      "eggs": "eggs"
-       // "eggs": jsonEncode(eggs),
-       // "orderMaker": orderMaker.id,
-       // "created": createdTime.toString(),
-       // "orderStatus": status.toString(),
-       // "changed": changed.toString(),
-       // "deliveryDate": deliveryDate.toString()
+        "eggs": jsonEncode(eggs),
+        "orderMaker": orderMaker.id,
+        "created": createdTime.toString(),
+        "orderStatus": status.toString(),
+        "changed": changed.toString(),
+        "deliveryDate": deliveryDate.toString()
       };
 }

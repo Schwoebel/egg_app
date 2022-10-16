@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:egg_app/domain/model/contact_details.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -24,6 +27,15 @@ void main(){
     });
     test("returns the pretty name", (){
       expect(contactDetails?.prettyName, equals("Curtis Schwoebel"));
+    });
+    test("can be turned into json", (){
+      final fileString = File('test_resources/contact_details.json').readAsStringSync();
+      expect(jsonEncode(contactDetails?.toJson()), equals(fileString));
+    });
+    test("can be created from json", (){
+      final fileString = File('test_resources/contact_details.json').readAsStringSync();
+      ContactDetails jsonMadeContactDetails = ContactDetails.fromJson(jsonDecode(fileString));
+      expect(jsonMadeContactDetails.firstName, contactDetails?.firstName);
     });
   });
 

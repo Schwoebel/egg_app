@@ -24,5 +24,13 @@ class User{
 
   get prettyContactName => contactDetails.prettyName;
 
+  Map<String, dynamic> toJson() => {
+    "id": id,
+    "contactDetails": contactDetails.toJson()
+  };
+
+  User.fromJson(Map<String, dynamic> jsonMap)
+  : id = jsonMap["id"],
+  contactDetails = ContactDetails.fromJson(jsonMap["contactDetails"]);
 
 }

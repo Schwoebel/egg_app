@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:egg_app/domain/model/contact_details.dart';
 import 'package:egg_app/domain/model/user.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -24,6 +27,16 @@ void main(){
     });
     test("User has a pretty name", (){
       expect(user?.prettyContactName, equals("Curtis Schwoebel"));
+    });
+    test("can be turned into json", (){
+      final fileString = File('test_resources/user.json').readAsStringSync();
+      expect(jsonEncode(user?.toJson()), equals(fileString));
+    });
+    test("can be created from json", (){
+      final fileString = File('test_resources/user.json').readAsStringSync();
+      User jsonUser = User.fromJson(jsonDecode(fileString));
+      expect(jsonUser.id, user?.id);
+      expect(jsonUser.contactDetails.prettyName, equals("Curtis Schwoebel"));
     });
   });
 }
