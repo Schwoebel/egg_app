@@ -2,20 +2,15 @@ import 'dart:convert';
 
 import 'package:clock/clock.dart';
 import 'package:egg_app/domain/enum/order_status_enum.dart';
-import 'package:egg_app/domain/model/contact_details.dart';
 import 'package:egg_app/domain/model/egg.dart';
 import 'package:egg_app/domain/model/order.dart';
-import 'package:egg_app/domain/model/user.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main(){
   group("Order", (){
     Order? order;
-    User user;
     setUp((){
-      ContactDetails contactDetails = ContactDetails("Curtis", "Schwoebel", "curtis.schwoebel@gmail.com","0735334287");
-      user = User(contactDetails, "asdqwe123");
-      order = Order(user, [Egg()]);
+      order = Order("asdqwe123", [Egg()]);
     });
 
     test("should Instantiate an Order", (){
@@ -23,7 +18,7 @@ void main(){
     });
 
     test("should have an orderer", (){
-      expect(order?.orderMaker, isInstanceOf<User>());
+      expect(order?.userId, isNotNull);
     });
 
     test("should have at eggCount", (){

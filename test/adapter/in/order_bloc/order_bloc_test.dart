@@ -1,18 +1,13 @@
 import 'package:egg_app/adapter/in/order_bloc/order_bloc.dart';
 import 'package:egg_app/application/use_cases/complete_order_usecase.dart';
 import 'package:egg_app/application/use_cases/take_order_usecase.dart';
-import 'package:egg_app/domain/model/contact_details.dart';
 import 'package:egg_app/domain/model/egg.dart';
 import 'package:egg_app/domain/model/order.dart';
-import 'package:egg_app/domain/model/user.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:bloc_test/bloc_test.dart';
 
 void main() {
   const TypeMatcher<OrderInitial> orderInitial = TypeMatcher<OrderInitial>();
-  ContactDetails contactDetails = ContactDetails(
-      "Curtis", "Schwoebel", "curtis.schwoebel@gmail.com", "0735334287");
-  User user = User(contactDetails, "asdqwe123");
   CompleteOrderUseCase completeOrderUseCase = CompleteOrderUseCase();
   TakeOrderUseCase takeOrderUseCase = TakeOrderUseCase();
   const OrderChanging orderChanging = OrderChanging();
@@ -23,7 +18,7 @@ void main() {
   group("OrderBloc Placing", () {
     Order? order;
     setUp(() {
-      order = Order(user, []);
+      order = Order("asdqwe123", []);
     });
     test("Initial State is OrderInitial", () {
       expectLater(orderBloc.state, orderInitial);
@@ -44,7 +39,7 @@ void main() {
   group("OrderBloc Changing", () {
     Order? order;
     setUp(() {
-      order = Order(user, [Egg()]);
+      order = Order("asdqwe123", [Egg()]);
       takeOrderUseCase.registerOrder(order!);
     });
 
@@ -61,7 +56,7 @@ void main() {
   group("OrderBloc Cancelling", () {
     Order? order;
     setUp(() {
-      order = Order(user, [Egg()]);
+      order = Order("asdqwe123", [Egg()]);
       takeOrderUseCase.registerOrder(order!);
     });
 
@@ -76,7 +71,7 @@ void main() {
   group("OrderBloc Completing", () {
     Order? order;
     setUp(() {
-      order = Order(user, [Egg()]);
+      order = Order("asdqwe123", [Egg()]);
       takeOrderUseCase.registerOrder(order!);
     });
 

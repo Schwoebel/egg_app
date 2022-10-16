@@ -1,9 +1,7 @@
 import 'package:egg_app/application/use_cases/complete_order_usecase.dart';
 import 'package:egg_app/domain/enum/order_status_enum.dart';
-import 'package:egg_app/domain/model/contact_details.dart';
 import 'package:egg_app/domain/model/egg.dart';
 import 'package:egg_app/domain/model/order.dart';
-import 'package:egg_app/domain/model/user.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main(){
@@ -14,9 +12,7 @@ void main(){
   });
 
   test("Order marked complete", (){
-    ContactDetails contactDetails = ContactDetails("curtis", "schwoebel", "curtis.schwoebel@gmail.com", "0735332487");
-    User user = User(contactDetails, "qweasd");
-    Order order = Order(user, [Egg()]);
+    Order order = Order("asdqwe123", [Egg()]);
     order.status = OrderStatus.placed;
     CompleteOrderUseCase completeOrderUseCase = CompleteOrderUseCase();
     completeOrderUseCase.completeOrder(order);

@@ -14,7 +14,7 @@ void main(){
     expect(egg, isInstanceOf<Egg>());
   });
 
-  test("egg is softboild by default", (){
+  test("egg is softboiled by default", (){
     expect(egg?.type, equals(EggType.softBoiled));
   });
 

@@ -2,20 +2,19 @@ import 'dart:convert';
 
 import 'package:clock/clock.dart';
 import 'package:egg_app/domain/model/order_timer.dart';
-import 'package:egg_app/domain/model/user.dart';
 
 import '../enum/order_status_enum.dart';
 import 'egg.dart';
 
 class Order {
   List<Egg> eggs;
-  final User orderMaker;
+  final String userId;
   late DateTime createdTime;
   late DateTime deliveryDate;
   late OrderStatus status;
   late bool changed = false;
   late String id;
-  Order(this.orderMaker, this.eggs) {
+  Order(this.userId, this.eggs) {
     createdTime = clock.now();
     status = OrderStatus.building;
     deliveryDate = OrderTimer.orderDeliveryDate(this);
@@ -31,7 +30,7 @@ class Order {
 
   Map<String, dynamic> toJson() => {
         "eggs": jsonEncode(eggs),
-        "orderMaker": orderMaker.id,
+        "orderMaker": userId,
         "created": createdTime.toString(),
         "orderStatus": status.toString(),
         "changed": changed.toString(),

@@ -1,23 +1,17 @@
 import 'package:clock/clock.dart';
-import 'package:egg_app/domain/model/contact_details.dart';
 import 'package:egg_app/domain/model/egg.dart';
 import 'package:egg_app/domain/model/order.dart';
 import 'package:egg_app/domain/model/order_timer.dart';
-import 'package:egg_app/domain/model/user.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   group("Order placing", () {
     Order? order;
-    User user;
     DateTime justInTime = DateTime(2022, 6, 6, 8, 59, 59);
     DateTime justOutOfTime = DateTime(2022, 6, 6, 9, 15);
     DateTime forTomorrow = DateTime(2022, 6, 6, 10, 0, 0);
     setUpAll(() {
-      ContactDetails contactDetails = ContactDetails(
-          "Curtis", "Schwoebel", "curtis.schwoebel@gmail.com", "0735334287");
-      user = User(contactDetails, "asdqwe123");
-      order = Order(user, [Egg(), Egg()]);
+      order = Order("asdqwe123", [Egg(), Egg()]);
       order?.createdTime = DateTime(2022, 6, 6, 7, 30);
     });
     test("Orders cannot be placed", () {

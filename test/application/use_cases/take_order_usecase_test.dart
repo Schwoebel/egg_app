@@ -1,19 +1,15 @@
 import 'package:egg_app/application/use_cases/take_order_usecase.dart';
 import 'package:egg_app/domain/enum/order_status_enum.dart';
-import 'package:egg_app/domain/model/contact_details.dart';
 import 'package:egg_app/domain/model/egg.dart';
 import 'package:egg_app/domain/model/order.dart';
-import 'package:egg_app/domain/model/user.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main(){
   TakeOrderUseCase takeOrderUseCase = TakeOrderUseCase();
-  ContactDetails contactDetails = ContactDetails("curtis", "schwoebel", "curtis.schwoebel@gmail.com", "0735332487");
-  User user = User(contactDetails, "qweasd");
   group("Order management", (){
     Order? order;
     setUpAll((){
-      order = Order(user, [Egg()]);
+      order = Order("asdqwe123", [Egg()]);
     });
     test("Can be created", (){
       expect(takeOrderUseCase, isInstanceOf<TakeOrderUseCase>());
