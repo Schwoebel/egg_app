@@ -1,5 +1,6 @@
 import 'package:egg_app/adapter/out/firestore/order_collection_adapter.dart';
 import 'package:egg_app/domain/core/module_container.dart';
+import 'package:egg_app/domain/enum/order_status_enum.dart';
 import 'package:egg_app/domain/model/egg.dart';
 import 'package:egg_app/domain/model/order.dart';
 import 'package:flutter_simple_dependency_injection/injector.dart';
@@ -10,19 +11,16 @@ import 'package:fake_cloud_firestore/fake_cloud_firestore.dart';
 
 Future<void> main() async {
   final instance = FakeFirebaseFirestore();
-  await instance.collection('users').add({
-    'username': 'Bob',
-  });
-  final snapshot = await instance.collection('users').get();
-  print(snapshot.docs.length); // 1
-  print(snapshot.docs.first.get('username')); // 'Bob'
-  print(instance.dump());
+  final snapshot = instance.collection('order');
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
-  final injector = await ModuleContainer().initialise(Injector());
-  OrderCollectionAdapter orderAdapter = injector.get<OrderCollectionAdapter>();
-  testWidgets('failing test example', (tester) async {
+  OrderCollectionAdapter orderAdapter = OrderCollectionAdapter(snapshot);
+  testWidgets('Order gets saved', (tester) async {
     Order order = Order("asdqwe123", [Egg()]);
-    orderAdapter.saveOrder(order);
+    await orderAdapter.saveOrder(order);
     expect(orderAdapter, isNotNull);
+    expect(order.status, equals(OrderStatus.placed));
+    var collectionReference = await snapshot.get();
+    print(collectionReference.size);
+    print(collectionReference.docs.first.data());
   });
 }

@@ -36,4 +36,7 @@ class Order {
         "changed": changed.toString(),
         "deliveryDate": deliveryDate.toString()
       };
+  Order.fromJson(Map<String, dynamic> orderMap, this.userId)
+  : eggs = orderMap['eggs'];
+
 }

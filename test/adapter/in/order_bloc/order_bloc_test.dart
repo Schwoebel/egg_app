@@ -1,15 +1,21 @@
 import 'package:egg_app/adapter/in/order_bloc/order_bloc.dart';
+import 'package:egg_app/application/ports/out/order_port.dart';
 import 'package:egg_app/application/use_cases/complete_order_usecase.dart';
 import 'package:egg_app/application/use_cases/take_order_usecase.dart';
 import 'package:egg_app/domain/model/egg.dart';
 import 'package:egg_app/domain/model/order.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:bloc_test/bloc_test.dart';
+import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
 
+import '../../../application/use_cases/take_order_usecase_test.mocks.dart';
+
+@GenerateMocks([OrderPort])
 void main() {
   const TypeMatcher<OrderInitial> orderInitial = TypeMatcher<OrderInitial>();
   CompleteOrderUseCase completeOrderUseCase = CompleteOrderUseCase();
-  TakeOrderUseCase takeOrderUseCase = TakeOrderUseCase();
+  TakeOrderUseCase takeOrderUseCase = TakeOrderUseCase(MockOrderPort());
   const OrderChanging orderChanging = OrderChanging();
   const OrderCancelling orderCancelling = OrderCancelling();
   const OrderPlacing orderPlacing = OrderPlacing();
@@ -26,6 +32,10 @@ void main() {
 
     blocTest<OrderBloc, OrderState>(
       'Can place an order',
+      setUp: () {
+        when(takeOrderUseCase.orderPort.saveOrder(order!))
+            .thenAnswer((_) async => true);
+      },
       build: () => OrderBloc(completeOrderUseCase, takeOrderUseCase),
       act: (bloc) => bloc.add(TakeOrder(order!)),
       expect: () => <OrderState>[orderPlacing, OrderPlaced(order!)],
@@ -40,6 +50,8 @@ void main() {
     Order? order;
     setUp(() {
       order = Order("asdqwe123", [Egg()]);
+      when(takeOrderUseCase.orderPort.saveOrder(order!))
+          .thenAnswer((_) async => true);
       takeOrderUseCase.registerOrder(order!);
     });
 
@@ -57,6 +69,8 @@ void main() {
     Order? order;
     setUp(() {
       order = Order("asdqwe123", [Egg()]);
+      when(takeOrderUseCase.orderPort.saveOrder(order!))
+          .thenAnswer((_) async => true);
       takeOrderUseCase.registerOrder(order!);
     });
 
@@ -64,23 +78,27 @@ void main() {
       'Can cancel an order',
       build: () => OrderBloc(completeOrderUseCase, takeOrderUseCase),
       act: (bloc) => bloc.add(CancelOrder(order!)),
-      expect: () =>
-          <OrderState>[orderCancelling, OrderCancelled(order!)],
+      expect: () => <OrderState>[orderCancelling, OrderCancelled(order!)],
     );
   });
   group("OrderBloc Completing", () {
     Order? order;
     setUp(() {
       order = Order("asdqwe123", [Egg()]);
+      when(takeOrderUseCase.orderPort.saveOrder(order!))
+          .thenAnswer((_) async => true);
       takeOrderUseCase.registerOrder(order!);
     });
 
     blocTest<OrderBloc, OrderState>(
       'Can complete an order',
+      setUp: () {
+        when(takeOrderUseCase.orderPort.saveOrder(order!))
+            .thenAnswer((_) async => true);
+      },
       build: () => OrderBloc(completeOrderUseCase, takeOrderUseCase),
       act: (bloc) => bloc.add(CompleteOrder(order!)),
-      expect: () =>
-      <OrderState>[orderCompleting, OrderComplete(order!)],
+      expect: () => <OrderState>[orderCompleting, OrderComplete(order!)],
     );
   });
 }

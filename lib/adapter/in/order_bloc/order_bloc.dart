@@ -21,10 +21,10 @@ class OrderBloc extends Bloc<OrderEvent, OrderState> {
     on<CompleteOrder>(_completeOrder);
   }
 
-  FutureOr<void> _placeOrder(OrderEvent event, Emitter<OrderState> orderStateEmitter) {
+  Future<FutureOr<void>> _placeOrder(OrderEvent event, Emitter<OrderState> orderStateEmitter) async {
     Order order = event.props.first as Order;
     orderStateEmitter(const OrderPlacing());
-    takeOrderUseCase.registerOrder(order);
+    await takeOrderUseCase.registerOrder(order);
     orderStateEmitter(OrderPlaced(order));
   }
   FutureOr<void> _changeOrder(OrderEvent event, Emitter<OrderState> orderStateEmitter){

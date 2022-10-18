@@ -4,17 +4,20 @@ import 'package:egg_app/domain/model/order.dart';
 import 'package:egg_app/domain/model/order_timer.dart';
 
 import '../ports/in/take_order_port.dart';
+import '../ports/out/order_port.dart';
 
 class TakeOrderUseCase implements TakeOrder{
 
-  TakeOrderUseCase();
+  final OrderPort orderPort;
+
+  TakeOrderUseCase(this.orderPort);
 
   @override
-  Order registerOrder(Order order) {
+  Future<Order> registerOrder(Order order) async {
     order.createdTime = clock.now();
     order.deliveryDate = OrderTimer.orderDeliveryDate(order);
     order.id = "asdqwe";
-    order.status = OrderStatus.placed;
+    await orderPort.saveOrder(order);
     return order;
   }
 
