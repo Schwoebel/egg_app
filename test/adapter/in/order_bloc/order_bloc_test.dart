@@ -24,7 +24,8 @@ void main() {
   group("OrderBloc Placing", () {
     Order? order;
     setUp(() {
-      order = Order("asdqwe123", []);
+      order = Order([]);
+      order?.userId = "asdqwe123";
     });
     test("Initial State is OrderInitial", () {
       expectLater(orderBloc.state, orderInitial);
@@ -49,7 +50,8 @@ void main() {
   group("OrderBloc Changing", () {
     Order? order;
     setUp(() {
-      order = Order("asdqwe123", [Egg()]);
+      order = Order([]);
+      order?.userId = "asdqwe123";
       when(takeOrderUseCase.orderPort.saveOrder(order!))
           .thenAnswer((_) async => true);
       takeOrderUseCase.registerOrder(order!);
@@ -68,7 +70,8 @@ void main() {
   group("OrderBloc Cancelling", () {
     Order? order;
     setUp(() {
-      order = Order("asdqwe123", [Egg()]);
+      order = Order([]);
+      order?.userId = "asdqwe123";
       when(takeOrderUseCase.orderPort.saveOrder(order!))
           .thenAnswer((_) async => true);
       takeOrderUseCase.registerOrder(order!);
@@ -84,7 +87,8 @@ void main() {
   group("OrderBloc Completing", () {
     Order? order;
     setUp(() {
-      order = Order("asdqwe123", [Egg()]);
+      order = Order([]);
+      order?.userId = "asdqwe123";
       when(takeOrderUseCase.orderPort.saveOrder(order!))
           .thenAnswer((_) async => true);
       takeOrderUseCase.registerOrder(order!);

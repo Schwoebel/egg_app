@@ -8,13 +8,14 @@ import 'egg.dart';
 
 class Order {
   List<Egg> eggs;
-  final String userId;
+  late final String userId;
+  late String userNiceName;
   late DateTime createdTime;
   late DateTime deliveryDate;
   late OrderStatus status;
   late bool changed = false;
   late String id;
-  Order(this.userId, this.eggs) {
+  Order(this.eggs) {
     createdTime = clock.now();
     status = OrderStatus.building;
     deliveryDate = OrderTimer.orderDeliveryDate(this);
@@ -36,7 +37,7 @@ class Order {
         "changed": changed.toString(),
         "deliveryDate": deliveryDate.toString()
       };
-  Order.fromJson(Map<String, dynamic> orderMap, this.userId)
-  : eggs = orderMap['eggs'];
+  Order.fromJson(Map<String, dynamic> orderMap)
+  : eggs = List<Egg>.from(orderMap['eggs'].map((egg) => Egg.fromString(egg)));
 
 }

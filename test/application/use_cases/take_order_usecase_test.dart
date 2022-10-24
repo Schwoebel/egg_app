@@ -17,7 +17,8 @@ void main(){
     Order? order;
     setUpAll((){
       takeOrderUseCase = TakeOrderUseCase(MockOrderPort());
-      order = Order("asdqwe123", [Egg()]);
+      order = Order([Egg()]);
+      order?.userId = "asdqwe123";
     });
     test("Can be created", (){
       expect(takeOrderUseCase, isInstanceOf<TakeOrderUseCase>());

@@ -12,7 +12,8 @@ void main(){
   });
 
   test("Order marked complete", (){
-    Order order = Order("asdqwe123", [Egg()]);
+    Order order = Order([Egg()]);
+    order.userId = "asdqwe123";
     order.status = OrderStatus.placed;
     CompleteOrderUseCase completeOrderUseCase = CompleteOrderUseCase();
     completeOrderUseCase.completeOrder(order);

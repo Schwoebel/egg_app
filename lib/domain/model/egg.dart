@@ -9,4 +9,7 @@ class Egg {
 
   Egg.fromJson(Map<String, dynamic> jsonMap)
   : eggType = EggType.values.byName(jsonMap['eggType']);
+
+  Egg.fromString(String eggType)
+  : eggType = EggType.values.byName(eggType);
 }

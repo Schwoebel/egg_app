@@ -10,7 +10,8 @@ void main(){
   group("Order", (){
     Order? order;
     setUp((){
-      order = Order("asdqwe123", [Egg()]);
+      order = Order([Egg()]);
+      order?.userId = "asdqwe123";
     });
 
     test("should Instantiate an Order", (){

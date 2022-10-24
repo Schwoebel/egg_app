@@ -11,7 +11,8 @@ void main() {
     DateTime justOutOfTime = DateTime(2022, 6, 6, 9, 15);
     DateTime forTomorrow = DateTime(2022, 6, 6, 10, 0, 0);
     setUpAll(() {
-      order = Order("asdqwe123", [Egg(), Egg()]);
+      order = Order([Egg(), Egg()]);
+      order?.userId = "asdqwe123";
       order?.createdTime = DateTime(2022, 6, 6, 7, 30);
     });
     test("Orders cannot be placed", () {

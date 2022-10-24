@@ -15,12 +15,11 @@ Future<void> main() async {
   IntegrationTestWidgetsFlutterBinding.ensureInitialized();
   OrderCollectionAdapter orderAdapter = OrderCollectionAdapter(snapshot);
   testWidgets('Order gets saved', (tester) async {
-    Order order = Order("asdqwe123", [Egg()]);
+    Order order = Order([Egg()]);
+    order.userId = "asdqwe123";
     await orderAdapter.saveOrder(order);
     expect(orderAdapter, isNotNull);
     expect(order.status, equals(OrderStatus.placed));
     var collectionReference = await snapshot.get();
-    print(collectionReference.size);
-    print(collectionReference.docs.first.data());
   });
 }

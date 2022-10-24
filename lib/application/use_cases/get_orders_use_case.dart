@@ -18,13 +18,13 @@ class GetOrdersUseCase implements GetOrdersPort {
     User user3 = User(contactDetails3, "asdqwe125");
     return {
       user1.prettyContactName: {
-        Order("asdqwe123", [Egg()])
+        Order([Egg()])..userId = "asdqwe123"
       },
       user2.prettyContactName: {
-        Order("asdqwe124", [Egg()])
+        Order([Egg()])..userId= "asdqwe124"
       },
       user3.prettyContactName: {
-        Order("asdqwe125", [Egg()])
+        Order([Egg()])..userId = "asdqwe125"
       }
     };
   }

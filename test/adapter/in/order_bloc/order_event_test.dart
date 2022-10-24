@@ -9,7 +9,8 @@ void main(){
   group("Order Events", (){
     Order? order;
     setUp((){
-      order = Order("asdqwe123", [Egg()]);
+      order = Order([]);
+      order?.userId = "asdqwe123";
     });
     test("Should create PlaceOrder", (){
       TakeOrder placeOrder = TakeOrder(order!);

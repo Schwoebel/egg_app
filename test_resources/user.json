@@ -1,1 +1,1 @@
-{"id":"asdqwe123","contactDetails":{"firstName":"Curtis","lastName":"Schwoebel","emailAddress":"curtis.schwoebel@gmail.com","phoneNumber":"0735334287"}}
+{"id":"asdqwe123","contactDetails":{"firstName":"Curtis","lastName":"Schwoebel","emailAddress":"curtis.schwoebel@gmail.com","phoneNumber":"0735334287","orderHistory":[{"breakfast":"dfgert345","completed":true,"eggs":["softBoiled","hardBoiled"]}]}}
